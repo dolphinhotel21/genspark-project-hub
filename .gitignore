@@ -1,0 +1,80 @@
+# ==================== OS生成ファイル ====================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.directory
+
+# ==================== エディタ・IDE ====================
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# JetBrains IDEs (WebStorm, PHPStorm, etc.)
+.idea/
+*.iml
+*.iws
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# ==================== Node.js（将来的に使用する場合） ====================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# ==================== バックアップファイル ====================
+*.backup
+*.bak
+*.tmp
+*.temp
+
+# ==================== ローカル設定ファイル ====================
+# 個人用設定（もし作成する場合）
+config.local.js
+settings.local.json
+
+# 環境変数ファイル
+.env
+.env.local
+.env.*.local
+
+# ==================== ビルド・デプロイ関連 ====================
+dist/
+build/
+*.log
+
+# ==================== テスト関連 ====================
+coverage/
+.nyc_output/
+
+# ==================== その他 ====================
+# Mac Finderのカスタムフォルダ属性
+.com.apple.timemachine.donotpresent
+
+# Windowsのショートカット
+*.lnk
