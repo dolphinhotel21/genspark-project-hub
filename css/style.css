@@ -17,7 +17,7 @@
     --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.15);
-    
+
     /* Gensparkカラー */
     --color-purple: #8b5cf6;
     --color-purple-light: #a78bfa;
@@ -26,11 +26,11 @@
     --color-green: #10b981;
     --color-orange: #f59e0b;
     --color-pink: #ec4899;
-    
+
     /* アクセントカラー */
     --accent-primary: var(--color-purple);
     --accent-hover: var(--color-purple-light);
-    
+
     /* その他 */
     --radius-sm: 6px;
     --radius-md: 10px;
@@ -353,32 +353,18 @@ body {
     opacity: 1;
 }
 
-.project-header[data-color="purple"] {
-    --accent-color: var(--color-purple);
-}
+.project-header[data-color="purple"] { --accent-color: var(--color-purple); }
+.project-header[data-color="blue"]   { --accent-color: var(--color-blue); }
+.project-header[data-color="green"]  { --accent-color: var(--color-green); }
+.project-header[data-color="orange"] { --accent-color: var(--color-orange); }
+.project-header[data-color="pink"]   { --accent-color: var(--color-pink); }
 
-.project-header[data-color="blue"] {
-    --accent-color: var(--color-blue);
-}
-
-.project-header[data-color="green"] {
-    --accent-color: var(--color-green);
-}
-
-.project-header[data-color="orange"] {
-    --accent-color: var(--color-orange);
-}
-
-.project-header[data-color="pink"] {
-    --accent-color: var(--color-pink);
-}
-
+/* FIX: opacity:0.1 on parent made icon invisible → use bg-tertiary + colored icon */
 .project-icon {
     width: 48px;
     height: 48px;
     border-radius: var(--radius-md);
-    background: linear-gradient(135deg, var(--accent-color), var(--accent-color));
-    opacity: 0.1;
+    background: var(--bg-tertiary);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -388,7 +374,6 @@ body {
 .project-icon i {
     font-size: 24px;
     color: var(--accent-color);
-    opacity: 1;
 }
 
 .project-info {
@@ -415,10 +400,6 @@ body {
     color: var(--color-orange);
 }
 
-.favorite-btn.active i::before {
-    content: '\f005';
-}
-
 .expand-btn {
     transition: transform 0.3s ease;
 }
@@ -428,6 +409,7 @@ body {
 }
 
 /* ==================== プロジェクトコンテンツ ==================== */
+/* FIX: .project-card.expanded controls expansion (matches JS) */
 .project-content {
     max-height: 0;
     overflow: hidden;
@@ -436,7 +418,7 @@ body {
 }
 
 .project-card.expanded .project-content {
-    max-height: 2000px;
+    max-height: 3000px;
 }
 
 .project-description {
@@ -515,6 +497,7 @@ body {
     transform: translateX(4px);
 }
 
+/* FIX: added .chat-icon for the icon box rendered by JS */
 .chat-icon {
     width: 36px;
     height: 36px;
@@ -527,16 +510,44 @@ body {
     flex-shrink: 0;
 }
 
+.chat-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    min-width: 0;
+}
+
 .chat-details {
     flex: 1;
     min-width: 0;
 }
 
+/* FIX: added text-decoration:none and display:block */
 .chat-title {
     font-size: 14px;
     font-weight: 500;
     color: var(--text-primary);
-    margin-bottom: 2px;
+    text-decoration: none;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chat-title:hover {
+    color: var(--accent-primary);
+    text-decoration: underline;
+}
+
+/* FIX: added .chat-description style */
+.chat-description {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .chat-url {
@@ -594,7 +605,7 @@ body {
 .subfolder-header {
     display: flex;
     align-items: center;
-    gap: 12px;
+    justify-content: space-between;
     padding: 12px;
     cursor: pointer;
     transition: var(--transition);
@@ -602,6 +613,14 @@ body {
 
 .subfolder-header:hover {
     background: var(--border-color);
+}
+
+/* FIX: .subfolder-info layout for icon + text */
+.subfolder-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
 }
 
 .subfolder-icon {
@@ -613,10 +632,12 @@ body {
     align-items: center;
     justify-content: center;
     color: var(--text-secondary);
+    flex-shrink: 0;
 }
 
-.subfolder-info {
-    flex: 1;
+.subfolder-text {
+    display: flex;
+    flex-direction: column;
 }
 
 .subfolder-name {
@@ -630,6 +651,12 @@ body {
     margin-top: 2px;
 }
 
+.subfolder-actions {
+    display: flex;
+    gap: 4px;
+}
+
+/* FIX: .subfolder-item.expanded controls expansion (matches JS) */
 .subfolder-content {
     max-height: 0;
     overflow: hidden;
@@ -638,7 +665,7 @@ body {
 }
 
 .subfolder-item.expanded .subfolder-content {
-    max-height: 500px;
+    max-height: 2000px;
     padding: 0 12px 12px;
 }
 
@@ -678,14 +705,8 @@ body {
 }
 
 @keyframes modalSlideUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
 .modal-header {
@@ -739,7 +760,8 @@ body {
 }
 
 .form-group input,
-.form-group textarea {
+.form-group textarea,
+.form-group select {
     width: 100%;
     padding: 12px;
     border: 1px solid var(--border-color);
@@ -752,7 +774,8 @@ body {
 }
 
 .form-group input:focus,
-.form-group textarea:focus {
+.form-group textarea:focus,
+.form-group select:focus {
     outline: none;
     border-color: var(--accent-primary);
     background: var(--bg-primary);
@@ -799,16 +822,20 @@ body {
     }
 }
 
+@media (min-width: 769px) and (max-width: 1024px) {
+    .sidebar {
+        width: 220px;
+    }
+
+    .main-content {
+        padding: 24px;
+    }
+}
+
 /* ==================== アニメーション ==================== */
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
 .project-card {
