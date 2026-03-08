@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genspark プロジェクトハブ</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- 認証スクリプト（最初に読み込む） -->
+    <script src="js/auth.js"></script>
+</head>
+<body>
+    <!-- サイドバー -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-circle-nodes"></i>
+                <h1>Genspark Hub</h1>
+            </div>
+            <button class="theme-toggle" id="themeToggle" aria-label="テーマ切り替え">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="プロジェクト・チャットを検索...">
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active" data-section="all">
+                <i class="fas fa-home"></i>
+                <span>すべてのプロジェクト</span>
+            </a>
+            <a href="#" class="nav-item" data-section="recent">
+                <i class="fas fa-clock"></i>
+                <span>最近使用</span>
+            </a>
+            <a href="#" class="nav-item" data-section="favorites">
+                <i class="fas fa-star"></i>
+                <span>お気に入り</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="https://www.genspark.ai" target="_blank" class="new-chat-btn">
+                <i class="fas fa-plus"></i>
+                <span>新しいチャットを開始</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- メインコンテンツ -->
+    <main class="main-content">
+        <header class="main-header">
+            <h2>プロジェクト一覧</h2>
+            <div class="header-actions">
+                <button class="btn-secondary" id="addProjectBtn">
+                    <i class="fas fa-folder-plus"></i>
+                    <span>新規プロジェクト</span>
+                </button>
+            </div>
+        </header>
+
+        <div class="projects-grid" id="projectsGrid">
+            <!-- プロジェクトA -->
+            <div class="project-card" data-project="project-a">
+                <div class="project-header" data-color="purple">
+                    <div class="project-icon">
+                        <i class="fas fa-folder"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>プロジェクトA</h3>
+                        <p class="project-meta">0 チャット · 最終更新: 未使用</p>
+                    </div>
+                    <div class="project-actions">
+                        <button class="btn-icon favorite-btn" title="お気に入り">
+                            <i class="far fa-star"></i>
+                        </button>
+                        <button class="btn-icon expand-btn" title="展開">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="project-content">
+                    <div class="project-description">
+                        <textarea placeholder="プロジェクトの説明・メモをここに入力..." rows="2"></textarea>
+                    </div>
+
+                    <div class="chats-section">
+                        <div class="section-header">
+                            <h4><i class="fas fa-comments"></i> チャット</h4>
+                            <button class="btn-small add-chat-btn">
+                                <i class="fas fa-plus"></i> チャットを追加
+                            </button>
+                        </div>
+                        <div class="chats-list">
+                            <div class="empty-state">
+                                <i class="fas fa-inbox"></i>
+                                <p>まだチャットがありません</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subfolders-section">
+                        <div class="section-header">
+                            <h4><i class="fas fa-folder-tree"></i> サブフォルダ</h4>
+                            <button class="btn-small add-subfolder-btn">
+                                <i class="fas fa-plus"></i> サブフォルダを追加
+                            </button>
+                        </div>
+                        <div class="subfolders-list"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- プロジェクトB -->
+            <div class="project-card" data-project="project-b">
+                <div class="project-header" data-color="blue">
+                    <div class="project-icon">
+                        <i class="fas fa-folder"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>プロジェクトB</h3>
+                        <p class="project-meta">0 チャット · 最終更新: 未使用</p>
+                    </div>
+                    <div class="project-actions">
+                        <button class="btn-icon favorite-btn" title="お気に入り">
+                            <i class="far fa-star"></i>
+                        </button>
+                        <button class="btn-icon expand-btn" title="展開">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="project-content">
+                    <div class="project-description">
+                        <textarea placeholder="プロジェクトの説明・メモをここに入力..." rows="2"></textarea>
+                    </div>
+
+                    <div class="chats-section">
+                        <div class="section-header">
+                            <h4><i class="fas fa-comments"></i> チャット</h4>
+                            <button class="btn-small add-chat-btn">
+                                <i class="fas fa-plus"></i> チャットを追加
+                            </button>
+                        </div>
+                        <div class="chats-list">
+                            <div class="empty-state">
+                                <i class="fas fa-inbox"></i>
+                                <p>まだチャットがありません</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subfolders-section">
+                        <div class="section-header">
+                            <h4><i class="fas fa-folder-tree"></i> サブフォルダ</h4>
+                            <button class="btn-small add-subfolder-btn">
+                                <i class="fas fa-plus"></i> サブフォルダを追加
+                            </button>
+                        </div>
+                        <div class="subfolders-list"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- プロジェクトC -->
+            <div class="project-card" data-project="project-c">
+                <div class="project-header" data-color="green">
+                    <div class="project-icon">
+                        <i class="fas fa-folder"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>プロジェクトC</h3>
+                        <p class="project-meta">0 チャット · 最終更新: 未使用</p>
+                    </div>
+                    <div class="project-actions">
+                        <button class="btn-icon favorite-btn" title="お気に入り">
+                            <i class="far fa-star"></i>
+                        </button>
+                        <button class="btn-icon expand-btn" title="展開">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="project-content">
+                    <div class="project-description">
+                        <textarea placeholder="プロジェクトの説明・メモをここに入力..." rows="2"></textarea>
+                    </div>
+
+                    <div class="chats-section">
+                        <div class="section-header">
+                            <h4><i class="fas fa-comments"></i> チャット</h4>
+                            <button class="btn-small add-chat-btn">
+                                <i class="fas fa-plus"></i> チャットを追加
+                            </button>
+                        </div>
+                        <div class="chats-list">
+                            <div class="empty-state">
+                                <i class="fas fa-inbox"></i>
+                                <p>まだチャットがありません</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subfolders-section">
+                        <div class="section-header">
+                            <h4><i class="fas fa-folder-tree"></i> サブフォルダ</h4>
+                            <button class="btn-small add-subfolder-btn">
+                                <i class="fas fa-plus"></i> サブフォルダを追加
+                            </button>
+                        </div>
+                        <div class="subfolders-list"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- プロジェクトD -->
+            <div class="project-card" data-project="project-d">
+                <div class="project-header" data-color="orange">
+                    <div class="project-icon">
+                        <i class="fas fa-folder"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>プロジェクトD</h3>
+                        <p class="project-meta">0 チャット · 最終更新: 未使用</p>
+                    </div>
+                    <div class="project-actions">
+                        <button class="btn-icon favorite-btn" title="お気に入り">
+                            <i class="far fa-star"></i>
+                        </button>
+                        <button class="btn-icon expand-btn" title="展開">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="project-content">
+                    <div class="project-description">
+                        <textarea placeholder="プロジェクトの説明・メモをここに入力..." rows="2"></textarea>
+                    </div>
+
+                    <div class="chats-section">
+                        <div class="section-header">
+                            <h4><i class="fas fa-comments"></i> チャット</h4>
+                            <button class="btn-small add-chat-btn">
+                                <i class="fas fa-plus"></i> チャットを追加
+                            </button>
+                        </div>
+                        <div class="chats-list">
+                            <div class="empty-state">
+                                <i class="fas fa-inbox"></i>
+                                <p>まだチャットがありません</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subfolders-section">
+                        <div class="section-header">
+                            <h4><i class="fas fa-folder-tree"></i> サブフォルダ</h4>
+                            <button class="btn-small add-subfolder-btn">
+                                <i class="fas fa-plus"></i> サブフォルダを追加
+                            </button>
+                        </div>
+                        <div class="subfolders-list"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- プロジェクトE -->
+            <div class="project-card" data-project="project-e">
+                <div class="project-header" data-color="pink">
+                    <div class="project-icon">
+                        <i class="fas fa-folder"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>プロジェクトE</h3>
+                        <p class="project-meta">0 チャット · 最終更新: 未使用</p>
+                    </div>
+                    <div class="project-actions">
+                        <button class="btn-icon favorite-btn" title="お気に入り">
+                            <i class="far fa-star"></i>
+                        </button>
+                        <button class="btn-icon expand-btn" title="展開">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="project-content">
+                    <div class="project-description">
+                        <textarea placeholder="プロジェクトの説明・メモをここに入力..." rows="2"></textarea>
+                    </div>
+
+                    <div class="chats-section">
+                        <div class="section-header">
+                            <h4><i class="fas fa-comments"></i> チャット</h4>
+                            <button class="btn-small add-chat-btn">
+                                <i class="fas fa-plus"></i> チャットを追加
+                            </button>
+                        </div>
+                        <div class="chats-list">
+                            <div class="empty-state">
+                                <i class="fas fa-inbox"></i>
+                                <p>まだチャットがありません</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subfolders-section">
+                        <div class="section-header">
+                            <h4><i class="fas fa-folder-tree"></i> サブフォルダ</h4>
+                            <button class="btn-small add-subfolder-btn">
+                                <i class="fas fa-plus"></i> サブフォルダを追加
+                            </button>
+                        </div>
+                        <div class="subfolders-list"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- モーダル：チャット追加 -->
+    <div class="modal" id="addChatModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>チャットを追加</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="chatTitle">チャットのタイトル</label>
+                    <input type="text" id="chatTitle" placeholder="例: マーケティング施策の議論">
+                </div>
+                <div class="form-group">
+                    <label for="chatUrl">チャットURL</label>
+                    <input type="url" id="chatUrl" placeholder="https://www.genspark.ai/chat/...">
+                </div>
+                <div class="form-group">
+                    <label for="chatNotes">メモ（任意）</label>
+                    <textarea id="chatNotes" placeholder="このチャットについてのメモ..." rows="3"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary modal-cancel">キャンセル</button>
+                <button class="btn-primary" id="saveChatBtn">追加</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- モーダル：サブフォルダ追加 -->
+    <div class="modal" id="addSubfolderModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>サブフォルダを追加</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="subfolderName">フォルダ名</label>
+                    <input type="text" id="subfolderName" placeholder="例: リサーチ">
+                </div>
+                <div class="form-group">
+                    <label for="subfolderDescription">説明（任意）</label>
+                    <textarea id="subfolderDescription" placeholder="このフォルダの目的..." rows="2"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary modal-cancel">キャンセル</button>
+                <button class="btn-primary" id="saveSubfolderBtn">追加</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- モーダル：チャット移動 -->
+    <div class="modal" id="moveChatModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>チャットを移動</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="moveTargetProject">移動先のプロジェクト</label>
+                    <select id="moveTargetProject" style="
+                        width: 100%;
+                        padding: 12px;
+                        border: 1px solid var(--border-color);
+                        border-radius: var(--radius-md);
+                        background: var(--bg-tertiary);
+                        color: var(--text-primary);
+                        font-size: 14px;
+                        font-family: inherit;
+                    ">
+                        <option value="">プロジェクトを選択...</option>
+                    </select>
+                </div>
+                <div class="form-group" id="moveTargetSubfolderGroup" style="display: none;">
+                    <label for="moveTargetSubfolder">移動先のサブフォルダ（任意）</label>
+                    <select id="moveTargetSubfolder" style="
+                        width: 100%;
+                        padding: 12px;
+                        border: 1px solid var(--border-color);
+                        border-radius: var(--radius-md);
+                        background: var(--bg-tertiary);
+                        color: var(--text-primary);
+                        font-size: 14px;
+                        font-family: inherit;
+                    ">
+                        <option value="">プロジェクトのルート</option>
+                    </select>
+                </div>
+                <div style="
+                    margin-top: 16px;
+                    padding: 12px;
+                    background: var(--bg-tertiary);
+                    border-radius: var(--radius-md);
+                    font-size: 13px;
+                    color: var(--text-secondary);
+                ">
+                    <strong id="moveChatTitle" style="color: var(--text-primary);"></strong> を移動します
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary modal-cancel">キャンセル</button>
+                <button class="btn-primary" id="confirmMoveBtn">移動</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
